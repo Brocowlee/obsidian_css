@@ -1,0 +1,95 @@
+/* Masquer le titre natif de la page Obsidian (Vue classique ET Export PDF) */
+.inline-title,
+.markdown-rendered .inline-title,
+.markdown-preview-view .title {
+  display: none !important;
+}
+
+@media print {
+  .inline-title,
+  .markdown-rendered .inline-title,
+  .markdown-preview-view .title {
+    display: none !important;
+  }
+}
+
+/* Forcer le fond blanc et le texte noir pour éviter le gris sur gris */
+.cv-pages {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #000000; 
+  background-color: #ffffff; 
+  padding: 20px; 
+  border-radius: 5px; 
+}
+
+/* Écraser la couleur rose du thème pour le texte en gras */
+.cv-pages strong,
+.cv-pages b {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+/* Écraser la couleur rose du thème pour le texte en italique */
+.cv-pages em,
+.cv-pages i {
+  color: #000000 !important;
+  font-style: italic !important;
+}
+
+.cv-pages h1 {
+  font-size: 24pt;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #111111;
+}
+
+.cv-pages h1 + p {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #111111;
+}
+
+.cv-pages h2 {
+  font-size: 14pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #2c3e50;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 3px;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.cv-pages h3 {
+  font-size: 12pt;
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  color: #111111;
+}
+
+.cv-pages ul {
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding-left: 20px;
+}
+
+.cv-pages li {
+  margin-bottom: 4px;
+}
+
+.cv-pages hr {
+  display: none; 
+}
+
+.cv-pages a {
+  text-decoration: none;
+  color: #2980b9;
+  font-weight: 500;
+}
