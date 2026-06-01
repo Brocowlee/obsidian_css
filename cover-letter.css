@@ -1,192 +1,124 @@
-/* ============================================================
-   COVER LETTER — Obsidian CSS Snippet
-   Save this file in: <vault>/.obsidian/snippets/cover-letter.css
-   Then enable it in Settings → Appearance → CSS Snippets
-   ============================================================ */
+/* ================================================
+   Cover Letter — Obsidian CSS Snippet
+   ------------------------------------------------
+   1. Copy this file to:
+      YourVault/.obsidian/snippets/cover-letter.css
+   2. Enable it in:
+      Settings → Appearance → CSS Snippets
+   3. Add this to each note's frontmatter:
+      cssclasses: cover-letter
+   ================================================ */
 
-/* ── Imports ──────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 
-/* ── Tokens ───────────────────────────────────────────────── */
+/* ── Variables ───────────────────────────────── */
 .cover-letter {
-  --cl-ink:        #1a1814;
-  --cl-muted:      #6b6459;
-  --cl-rule:       #d4cfc8;
-  --cl-accent:     #8b3a2a;
-  --cl-bg:         #faf9f7;
-
-  --cl-font-body:  'Cormorant Garamond', Georgia, serif;
-  --cl-font-ui:    'Jost', sans-serif;
-
-  --cl-page-w:     680px;
-  --cl-gap:        2rem;
+  --cl-accent:      #a07850;      /* warm bronze rule   */
+  --cl-text:        #1c1c1c;      /* near-black body    */
+  --cl-muted:       #7a7a7a;      /* contact / date     */
+  --cl-page-width:  680px;
+  --cl-font-body:   'EB Garamond', Georgia, 'Times New Roman', serif;
+  --cl-font-head:   'Playfair Display', Georgia, serif;
+  --cl-size-body:   13pt;
+  --cl-size-name:   26pt;
+  --cl-size-meta:   8.5pt;
+  --cl-leading:     1.8;
 }
 
-/* ── Page shell ───────────────────────────────────────────── */
+/* ── Page container ──────────────────────────── */
 .cover-letter .markdown-preview-view,
 .cover-letter .markdown-reading-view {
-  background: var(--cl-bg);
-  font-family: var(--cl-font-body);
-  color: var(--cl-ink);
-  font-size: 17px;
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
+  font-family:  var(--cl-font-body);
+  font-size:    var(--cl-size-body);
+  line-height:  var(--cl-leading);
+  color:        var(--cl-text);
+  max-width:    var(--cl-page-width);
+  margin:       0 auto;
+  padding:      64px 56px 80px;
 }
 
-.cover-letter .markdown-preview-sizer {
-  max-width: var(--cl-page-w) !important;
-  margin: 0 auto;
-  padding: 3.5rem 2rem 4rem;
-}
-
-/* ── HR divider ───────────────────────────────────────────── */
-.cover-letter hr {
-  border: none;
-  border-top: 1px solid var(--cl-rule);
-  margin: 1.75rem 0;
-}
-
-/* ── Header block ─────────────────────────────────────────── */
-.cover-letter .cl-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.25rem;
-}
-
-.cover-letter .cl-sender {
-  font-family: var(--cl-font-ui);
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: var(--cl-ink);
+/* ── Name (H1) ───────────────────────────────── */
+.cover-letter h1 {
+  font-family:    var(--cl-font-head);
+  font-size:      var(--cl-size-name);
+  font-weight:    600;
   letter-spacing: 0.01em;
+  color:          var(--cl-text);
+  margin:         0 0 8px;
+  padding:        0;
+  border:         none;
+  line-height:    1.15;
 }
 
-.cover-letter .cl-sender strong {
-  display: block;
-  font-family: var(--cl-font-ui);
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+/* Thin accent line above the name */
+.cover-letter h1::before {
+  content:      '';
+  display:      block;
+  width:        36px;
+  height:       2px;
+  background:   var(--cl-accent);
+  margin-bottom: 18px;
+}
+
+/* ── Contact line (first <p> after h1) ───────── */
+.cover-letter h1 + p {
+  font-size:      var(--cl-size-meta);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--cl-ink);
-  margin-bottom: 0.2rem;
+  color:          var(--cl-muted);
+  margin:         0 0 4px;
+  font-style:     normal;
 }
 
-/* Thin red rule under the name */
-.cover-letter .cl-sender strong::after {
-  content: '';
-  display: block;
-  width: 2rem;
-  height: 1.5px;
-  background: var(--cl-accent);
-  margin-top: 0.45rem;
-  margin-bottom: 0.35rem;
+/* ── Horizontal rules ────────────────────────── */
+.cover-letter hr {
+  border:         none;
+  border-top:     1px solid var(--cl-accent);
+  opacity:        0.45;
+  margin:         24px 0;
 }
 
-.cover-letter .cl-date {
-  font-family: var(--cl-font-ui);
-  font-size: 12px;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  color: var(--cl-muted);
-  text-transform: uppercase;
-  white-space: nowrap;
-  padding-top: 0.15rem;
+/* ── Date (first <p> after first hr) ─────────── */
+.cover-letter hr + p {
+  font-size:  10.5pt;
+  color:      var(--cl-muted);
+  margin:     0 0 20px;
 }
 
-/* ── Recipient block ──────────────────────────────────────── */
-.cover-letter .cl-recipient {
-  font-family: var(--cl-font-ui);
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: var(--cl-ink);
+/* ── Recipient block ─────────────────────────── */
+.cover-letter strong {
+  font-weight:  600;
+  font-style:   normal;
+  color:        var(--cl-text);
 }
 
-.cover-letter .cl-recipient strong {
-  font-weight: 500;
+/* ── Body paragraphs ─────────────────────────── */
+.cover-letter p {
+  text-align: justify;
+  hyphens:    auto;
+  margin:     0 0 1.1em;
 }
 
-/* ── Subject line ─────────────────────────────────────────── */
-.cover-letter .cl-subject {
-  font-family: var(--cl-font-ui);
-  font-size: 12.5px;
-  font-weight: 300;
-  letter-spacing: 0.04em;
-  color: var(--cl-muted);
-  margin: 1rem 0;
+/* ── Signature name ──────────────────────────── */
+.cover-letter p:last-child {
+  margin-top: 8px;
+  font-size:  12.5pt;
 }
 
-.cover-letter .cl-subject strong {
-  font-weight: 500;
-  color: var(--cl-ink);
-}
-
-/* ── Body text ────────────────────────────────────────────── */
-.cover-letter .cl-body p {
-  margin: 0 0 1.3rem;
-  font-size: 17px;
-  line-height: 1.85;
-  font-weight: 300;
-}
-
-.cover-letter .cl-body p:last-child {
-  margin-bottom: 0;
-}
-
-.cover-letter .cl-body strong {
-  font-weight: 600;
-  color: var(--cl-ink);
-}
-
-.cover-letter .cl-body em {
-  font-style: italic;
-  color: var(--cl-muted);
-}
-
-/* Signature name */
-.cover-letter .cl-body p strong:only-child {
-  font-family: var(--cl-font-ui);
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  display: block;
-  margin-top: 0.5rem;
-}
-
-/* ── Footer ───────────────────────────────────────────────── */
-.cover-letter .cl-footer {
-  margin-top: 2.5rem;
-  font-family: var(--cl-font-ui);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--cl-muted);
-}
-
-/* ── Links ────────────────────────────────────────────────── */
-.cover-letter a {
-  color: var(--cl-accent);
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--cl-accent) 35%, transparent);
-}
-
-/* ── Print / PDF export ───────────────────────────────────── */
+/* ── PDF Export ──────────────────────────────── */
 @media print {
-  .cover-letter .markdown-preview-sizer {
-    padding: 2cm 2.2cm;
-    max-width: 100% !important;
+  .cover-letter .markdown-preview-view,
+  .cover-letter .markdown-reading-view {
+    max-width: 100%;
+    padding:   0;
+    font-size: 11.5pt;
   }
 
-  .cover-letter {
-    --cl-bg: #ffffff;
+  .cover-letter h1 {
+    font-size: 22pt;
   }
 
-  .cover-letter a {
-    color: var(--cl-ink);
-    border-bottom: none;
+  .cover-letter h1 + p {
+    font-size: 7.5pt;
   }
 }
