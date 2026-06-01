@@ -9,7 +9,7 @@
       cssclasses: cover-letter
    ================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=EB+Garamond:ital,wght=0,400;0,500;1,400&display=swap');
 
 /* ── Variables ───────────────────────────────── */
 .cover-letter {
@@ -28,26 +28,32 @@
 /* ── Page container ──────────────────────────── */
 .cover-letter .markdown-preview-view,
 .cover-letter .markdown-reading-view {
-  font-family:  var(--cl-font-body);
-  font-size:    var(--cl-size-body);
-  line-height:  var(--cl-leading);
-  color:        var(--cl-text);
-  max-width:    var(--cl-page-width);
-  margin:       0 auto;
-  padding:      64px 56px 80px;
+  font-family:      var(--cl-font-body) !important;
+  font-size:        var(--cl-size-body) !important;
+  line-height:      var(--cl-leading) !important;
+  color:            var(--cl-text) !important;
+  background-color: #ffffff !important; /* Forces page background to white */
+  max-width:        var(--cl-page-width) !important;
+  margin:           0 auto !important;
+  padding:          64px 56px 80px !important;
+}
+
+/* Ensure the print container also respects the white background */
+.cover-letter.markdown-rendered {
+  background-color: #ffffff !important;
 }
 
 /* ── Name (H1) ───────────────────────────────── */
 .cover-letter h1 {
-  font-family:    var(--cl-font-head);
-  font-size:      var(--cl-size-name);
-  font-weight:    600;
-  letter-spacing: 0.01em;
-  color:          var(--cl-text);
-  margin:         0 0 8px;
-  padding:        0;
-  border:         none;
-  line-height:    1.15;
+  font-family:    var(--cl-font-head) !important;
+  font-size:      var(--cl-size-name) !important;
+  font-weight:    600 !important;
+  letter-spacing: 0.01em !important;
+  color:          var(--cl-text) !important; /* Forced black */
+  margin:         0 0 8px !important;
+  padding:        0 !important;
+  border:         none !important;
+  line-height:    1.15 !important;
 }
 
 /* Thin accent line above the name */
@@ -56,69 +62,77 @@
   display:      block;
   width:        36px;
   height:       2px;
-  background:   var(--cl-accent);
+  background:   var(--cl-accent) !important;
   margin-bottom: 18px;
 }
 
 /* ── Contact line (first <p> after h1) ───────── */
 .cover-letter h1 + p {
-  font-size:      var(--cl-size-meta);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color:          var(--cl-muted);
-  margin:         0 0 4px;
-  font-style:     normal;
+  font-size:      var(--cl-size-meta) !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color:          var(--cl-muted) !important; /* Forced gray */
+  margin:         0 0 4px !important;
+  font-style:     normal !important;
 }
 
 /* ── Horizontal rules ────────────────────────── */
 .cover-letter hr {
-  border:         none;
-  border-top:     1px solid var(--cl-accent);
-  opacity:        0.45;
-  margin:         24px 0;
+  border:         none !important;
+  border-top:     1px solid var(--cl-accent) !important;
+  opacity:        0.45 !important;
+  margin:         24px 0 !important;
 }
 
 /* ── Date (first <p> after first hr) ─────────── */
 .cover-letter hr + p {
-  font-size:  10.5pt;
-  color:      var(--cl-muted);
-  margin:     0 0 20px;
+  font-size:  10.5pt !important;
+  color:      var(--cl-muted) !important; /* Forced gray */
+  margin:     0 0 20px !important;
 }
 
 /* ── Recipient block ─────────────────────────── */
 .cover-letter strong {
-  font-weight:  600;
-  font-style:   normal;
-  color:        var(--cl-text);
+  font-weight:  600 !important;
+  font-style:   normal !important;
+  color:        var(--cl-text) !important; /* Forced black */
+}
+
+/* ── Italics / Emphasis ──────────────────────── */
+.cover-letter em {
+  font-style:   italic !important;
+  color:        var(--cl-text) !important; /* Forces italicized text to remain near-black */
 }
 
 /* ── Body paragraphs ─────────────────────────── */
 .cover-letter p {
-  text-align: justify;
-  hyphens:    auto;
-  margin:     0 0 1.1em;
+  text-align: justify !important;
+  hyphens:    auto !important;
+  color:      var(--cl-text) !important; /* Forced black */
+  margin:     0 0 1.1em !important;
 }
 
 /* ── Signature name ──────────────────────────── */
 .cover-letter p:last-child {
-  margin-top: 8px;
-  font-size:  12.5pt;
+  margin-top: 8px !important;
+  font-size:  12.5pt !important;
 }
 
 /* ── PDF Export ──────────────────────────────── */
 @media print {
   .cover-letter .markdown-preview-view,
   .cover-letter .markdown-reading-view {
-    max-width: 100%;
-    padding:   0;
-    font-size: 11.5pt;
+    max-width: 100% !important;
+    padding:   0 !important;
+    font-size: 11.5pt !important;
+    background-color: #ffffff !important;
   }
 
   .cover-letter h1 {
-    font-size: 22pt;
+    font-size: 22pt !important;
   }
 
   .cover-letter h1 + p {
-    font-size: 7.5pt;
+    font-size: 7.5pt !important;
   }
 }
